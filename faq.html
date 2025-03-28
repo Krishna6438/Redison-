@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FAQ - Redison Engine Oils & Lubricants</title>
+    <meta name="description" content="Frequently asked questions about Redison engine oils and lubricants. Find answers to common questions about our products.">
+    <link href="/src/style.css" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation (Same as index.html) -->
+    <nav class="bg-gray-900 text-white py-4">
+        <div class="container mx-auto px-4 flex justify-between items-center">
+            <a href="/" class="text-2xl font-bold">Redison</a>
+            <div class="hidden md:flex space-x-6">
+                <a href="/" class="hover:text-red-500">Home</a>
+                <a href="/products.html" class="hover:text-red-500">Products</a>
+                <a href="/distributors.html" class="hover:text-red-500">Find Distributors</a>
+                <a href="/faq.html" class="hover:text-red-500">FAQ</a>
+                <a href="/contact.html" class="hover:text-red-500">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- FAQ Section -->
+    <section class="py-16 bg-gray-100">
+        <div class="container mx-auto px-4">
+            <h1 class="text-4xl font-bold text-center mb-12">Frequently Asked Questions</h1>
+            
+            <div class="max-w-3xl mx-auto space-y-6">
+                <div class="faq-item" data-aos="fade-up">
+                    <div class="faq-question">
+                        <span>How often should I change my engine oil?</span>
+                        <svg class="w-6 h-6 transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                        </svg>
+                    </div>
+                    <div class="faq-answer">
+                        For most modern vehicles, we recommend changing your engine oil every 5,000 to 7,500 miles. However, this can vary based on your vehicle's make, model, and driving conditions. Always consult your owner's manual for specific recommendations.
+                    </div>
+                </div>
+
+                <div class="faq-item" data-aos="fade-up">
+                    <div class="faq-question">
+                        <span>What's the difference between synthetic and conventional oil?</span>
+                        <svg class="w-6 h-6 transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                        </svg>
+                    </div>
+                    <div class="faq-answer">
+                        Synthetic oil is artificially made using chemical compounds, offering superior performance, longer-lasting protection, and better stability at extreme temperatures. Conventional oil is refined from crude oil and is more suitable for older vehicles with simpler engine designs.
+                    </div>
+                </div>
+
+                <div class="faq-item" data-aos="fade-up">
+                    <div class="faq-question">
+                        <span>How do I know which oil grade is right for my vehicle?</span>
+                        <svg class="w-6 h-6 transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                        </svg>
+                    </div>
+                    <div class="faq-answer">
+                        The best oil grade for your vehicle is specified in your owner's manual. Common grades include 5W-30, 5W-40, and 10W-30. The first number indicates cold weather viscosity, while the second number represents hot weather viscosity.
+                    </div>
+                </div>
+
+                <div class="faq-item" data-aos="fade-up">
+                    <div class="faq-question">
+                        <span>Are Redison products compatible with all vehicle types?</span>
+                        <svg class="w-6 h-6 transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                        </svg>
+                    </div>
+                    <div class="faq-answer">
+                        Yes, Redison offers a wide range of products suitable for various vehicles including cars, motorcycles, trucks, and industrial machinery. Each product is clearly labeled with its intended use and specifications.
+                    </div>
+                </div>
+
+                <div class="faq-item" data-aos="fade-up">
+                    <div class="faq-question">
+                        <span>How can I verify if a distributor is authorized?</span>
+                        <svg class="w-6 h-6 transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                        </svg>
+                    </div>
+                    <div class="faq-answer">
+                        All authorized Redison distributors are listed in our distributor locator tool. They also display an official Redison certification in their stores. If you're unsure, you can contact our customer service for verification.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer (Same as index.html) -->
+    <footer class="bg-gray-900 text-white py-12">
+        <!-- Footer content -->
+    </footer>
+
+    <script>
+        // FAQ Toggle functionality
+        document.querySelectorAll('.faq-item').forEach(item => {
+            const question = item.querySelector('.faq-question');
+            const arrow = question.querySelector('svg');
+            
+            question.addEventListener('click', () => {
+                const answer = item.querySelector('.faq-answer');
+                const isOpen = item.classList.contains('active');
+                
+                // Close all other FAQs
+                document.querySelectorAll('.faq-item').forEach(otherItem => {
+                    if (otherItem !== item) {
+                        otherItem.classList.remove('active');
+                        otherItem.querySelector('svg').classList.remove('rotate-180');
+                    }
+                });
+                
+                // Toggle current FAQ
+                item.classList.toggle('active');
+                arrow.classList.toggle('rotate-180');
+            });
+        });
+    </script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init();
+    </script>
+</body>
+</html>

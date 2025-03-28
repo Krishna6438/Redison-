@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Find Distributors - Redison</title>
+    <meta name="description" content="Locate Redison authorized distributors in your city. Find genuine engine oils and lubricants near you.">
+    <link href="/src/style.css" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="bg-gray-900 text-white py-4">
+        <div class="container mx-auto px-4 flex justify-between items-center">
+            <a href="/" class="text-2xl font-bold">Redison</a>
+            <div class="hidden md:flex space-x-6">
+                <a href="/" class="hover:text-red-500">Home</a>
+                <a href="/products.html" class="hover:text-red-500">Products</a>
+                <a href="/distributors.html" class="hover:text-red-500">Find Distributors</a>
+                <a href="/about.html" class="hover:text-red-500">About Us</a>
+                <a href="/blog.html" class="hover:text-red-500">Blog</a>
+                <a href="/faq.html" class="hover:text-red-500">FAQ</a>
+                <a href="/contact.html" class="hover:text-red-500">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Distributor Search Section -->
+    <section class="py-16 bg-gray-100">
+        <div class="container mx-auto px-4">
+            <h1 class="text-4xl font-bold text-center mb-8">Find Distributors Near You</h1>
+            <div class="max-w-md mx-auto">
+                <div class="bg-white rounded-lg shadow-lg p-6">
+                    <input 
+                        type="text" 
+                        id="citySearch" 
+                        placeholder="Enter your city name" 
+                        class="w-full px-4 py-2 rounded border focus:outline-none focus:ring-2 focus:ring-red-500"
+                    >
+                    <button 
+                        onclick="searchDistributors()"
+                        class="w-full mt-4 bg-red-600 text-white px-6 py-2 rounded hover:bg-red-700 transition"
+                    >
+                        Search Distributors
+                    </button>
+                </div>
+            </div>
+
+            <!-- Distributors Results -->
+            <div id="distributorResults" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-12">
+                <!-- Results will be populated by JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="text-xl font-bold mb-4">Redison</h3>
+                    <p class="text-gray-400">Premium engine oils and lubricants for all your automotive needs.</p>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Quick Links</h4>
+                    <ul class="space-y-2">
+                        <li><a href="/about.html" class="text-gray-400 hover:text-white">About Us</a></li>
+                        <li><a href="/products.html" class="text-gray-400 hover:text-white">Products</a></li>
+                        <li><a href="/distributors.html" class="text-gray-400 hover:text-white">Distributors</a></li>
+                        <li><a href="/blog.html" class="text-gray-400 hover:text-white">Blog</a></li>
+                        <li><a href="/contact.html" class="text-gray-400 hover:text-white">Contact</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Contact</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li>Email: info@redison.com</li>
+                        <li>Phone: +91 7906031721</li>
+                        <li>Address: 123 Fatehabad Road, Agra, Uttar Pradesh - 282001</li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Newsletter</h4>
+                    <form class="space-y-4">
+                        <input type="email" placeholder="Enter your email" class="w-full px-4 py-2 rounded bg-gray-800 text-white">
+                        <button class="bg-red-600 text-white px-6 py-2 rounded hover:bg-red-700 transition w-full">
+                            Subscribe
+                        </button>
+                    </form>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
+                <p>&copy; 2024 Redison. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Simulated distributor database
+        const distributors = {
+            'agra': [
+                { name: 'Redison Auto Care', address: '45 Fatehabad Road, Agra', phone: '+91 7906031721', rating: 4.8 },
+                { name: 'Taj Auto Parts', address: '123 Mall Road, Agra', phone: '+91 7906031722', rating: 4.6 },
+                { name: 'Highway Lubricants', address: '78 MG Road, Agra', phone: '+91 7906031723', rating: 4.7 }
+            ],
+            'delhi': [
+                { name: 'Delhi Motors', address: '34 Connaught Place, Delhi', phone: '+91 7906031724', rating: 4.5 },
+                { name: 'Capital Lubricants', address: '56 Karol Bagh, Delhi', phone: '+91 7906031725', rating: 4.9 },
+                { name: 'Auto Hub Delhi', address: '89 Chandni Chowk, Delhi', phone: '+91 7906031726', rating: 4.4 }
+            ],
+            'mumbai': [
+                { name: 'Mumbai Auto Care', address: '12 Marine Drive, Mumbai', phone: '+91 7906031727', rating: 4.7 },
+                { name: 'Western Oils', address: '45 Bandra West, Mumbai', phone: '+91 7906031728', rating: 4.8 },
+                { name: 'City Lubricants', address: '67 Andheri East, Mumbai', phone: '+91 7906031729', rating: 4.6 }
+            ]
+        };
+
+        function searchDistributors() {
+            const city = document.getElementById('citySearch').value.toLowerCase();
+            const resultsDiv = document.getElementById('distributorResults');
+            resultsDiv.innerHTML = '';
+
+            if (distributors[city]) {
+                distributors[city].forEach(dist => {
+                    const card = document.createElement('div');
+                    card.className = 'distributor-card';
+                    card.innerHTML = `
+                        <h3 class="text-xl font-semibold mb-2">${dist.name}</h3>
+                        <p class="text-gray-600 mb-2">${dist.address}</p>
+                        <p class="text-gray-600 mb-2">Phone: ${dist.phone}</p>
+                        <div class="flex items-center">
+                            <span class="text-yellow-500">★</span>
+                            <span class="ml-1">${dist.rating}/5.0</span>
+                        </div>
+                    `;
+                    resultsDiv.appendChild(card);
+                });
+            } else {
+                resultsDiv.innerHTML = `
+                    <div class="col-span-full text-center text-gray-600">
+                        No distributors found in ${city}. Please try another city or contact us for assistance.
+                    </div>
+                `;
+            }
+        }
+    </script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init();
+    </script>
+</body>
+</html>
